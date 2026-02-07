@@ -1,0 +1,18 @@
+.single-item {
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 10px;
+}
+.single-item p {
+  text-transform: capitalize;
+}
+.single-item .price {
+  color: #c59d5f;
+  font-size: 1.25rem;
+}
+.single-item input[type="checkbox"] {
+  cursor: pointer;
+  width: 1rem;
+  height: 1rem;
+}

@@ -9,10 +9,31 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     />
     <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="css/single-item.css" />
   </head>
   <body>
     <section class="section-center">
-      <div class="grocery"></div>
+      <div class="grocery">
+        <div id=" app">
+          <div class="items">
+            <div class="single-item">
+              <input type="checkbox" checked />
+              <div class="item-details">
+                <p style="text-decoration: dotted">milk</p>
+                <span class="price" style="font-size: smaller; display: block"
+                  >NPR. 50</span
+                >
+              </div>
+              <button class="btn icon-btn edit-btn" type="button">
+                <i class="fa-regular fa-pen-to-square"></i>
+              </button>
+              <button class="btn icon-btn remove-btn" type="button">
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
     <script type="module"></script>
   </body>
