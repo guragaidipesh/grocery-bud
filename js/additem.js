@@ -1,30 +1,31 @@
-import { addItem } from "./app.js";
+import { addItem, updateItemName } from "./app.js";
 
-// Create Form Element
-// Create Form Element
-export function createForm() {
+export function createForm(editId = null, itemToEdit = null) {
   const form = document.createElement("form");
 
   form.innerHTML = `
-      <h2>Grocery Bud</h2>
-      <div class="form-control">
-        <input
-          type="text"
-          class="form-input"
-          placeholder="e.g. eggs"
-        />
-        <input
-          type="number"
-          class="form-price"
-          placeholder="e.g. 10"
-        />
-        <button type="submit" class="btn">Add Item</button>
-      </div>
-    `;
+    <h2>Grocery Bud</h2>
+    <div class="form-control">
+      <input
+        type="text"
+        class="form-input"
+        placeholder="e.g. eggs"
+        value="${itemToEdit ? itemToEdit.name : ""}"
+      />
+      <input
+        type="number"
+        class="form-price"
+        placeholder="e.g. 10"
+        value="${itemToEdit ? itemToEdit.price : ""}"
+      />
+      <button type="submit" class="btn">
+        ${editId ? "Edit Item" : "Add Item"}
+      </button>
+    </div>
+  `;
 
-  // Handle form submission
   form.addEventListener("submit", (e) => {
-    e.preventDefault(); // prevent page reload
+    e.preventDefault();
 
     const input = form.querySelector(".form-input");
     const priceInput = form.querySelector(".form-price");
@@ -32,14 +33,19 @@ export function createForm() {
     const price = priceInput.value.trim();
 
     if (!name || !price) {
-      alert("Please provide both name and price"); // show alert if input is empty
+      alert("Please provide both name and price");
       return;
     }
 
-    addItem(name, price); // add the new item with name and price
-    input.value = ""; // clear name input
-    priceInput.value = ""; // clear price input
-    input.focus(); // focus back on name input
+    if (editId) {
+      updateItemName(name, price);
+    } else {
+      addItem(name, price);
+    }
+
+    input.value = "";
+    priceInput.value = "";
+    input.focus();
   });
 
   return form;

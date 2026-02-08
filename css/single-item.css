@@ -1,7 +1,7 @@
 .single-item {
   display: grid;
   align-items: center;
-  grid-template-columns: auto 1fr auto auto;
+  grid-template-columns: auto 1fr auto auto auto;
   gap: 1rem;
 }
 .single-item p {
@@ -25,14 +25,42 @@
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
 }
-.single-item .btn:hover {
+/* Edit button */
+.single-item .edit-btn {
+  background: #06b6d4;
+  color: #fff;
+}
+.single-item .edit-btn:hover {
   background: #0e7490;
 }
 
+/* Delete button */
 .single-item .remove-btn {
   background: #0f0f0f;
+  color: #fff;
 }
-
 .single-item .remove-btn:hover {
   background: #900e0e;
+}
+
+/* Favorite button */
+.single-item .favorite-btn {
+  background: transparent;
+  padding: 0.25rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.single-item .favorite-btn i.fa-solid {
+  color: gold;
+}
+
+.single-item .favorite-btn i.fa-regular {
+  color: #000;
+}
+
+.single-item .favorite-btn i {
+  pointer-events: none; /* ensures clicking triggers button, not the icon */
 }

@@ -1,7 +1,7 @@
 .add-item {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 4rem;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
@@ -9,13 +9,13 @@
 
 .add-item input[type="text"],
 .add-item input[type="number"] {
-  padding: 0.5rem 0.75rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
+  padding: 0.75rem 2rem;
+  font-size: 1.5rem;
+  border: 1.5px solid #848181;
   border-radius: 5px;
   outline: none;
-  width: 200px;
-  transition: 0.3s;
+  width: 220px;
+  transition: all 0.3s ease;
 }
 
 .add-item input:focus {
@@ -24,8 +24,8 @@
 }
 
 .add-item button#add-btn {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  font-size: 1.5rem;
   background-color: #4caf50;
   color: #fff;
   border: none;
