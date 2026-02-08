@@ -2,74 +2,94 @@ import { groceryItems } from "./data.js";
 import { createItems } from "./item.js";
 import { createForm } from "./additem.js";
 
-let items = groceryItems;
+const STORAGE_KEY = "grocery_items";
+
+// Load from localStorage OR fallback to data.js
+let items = JSON.parse(localStorage.getItem(STORAGE_KEY)) || groceryItems;
 let editId = null;
 
+// Save to localStorage
+function saveToLocalStorage() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+}
+
+// Toggle completed
 export function editCompleted(itemId) {
   items = items.map((item) =>
     item.id === itemId ? { ...item, completed: !item.completed } : item
   );
+  saveToLocalStorage();
   render();
 }
 
+// Generate unique ID
 function generateId() {
-  return Date.now().toString(36) + Math.random().toString(36).substr(2);
+  return Date.now().toString(36) + Math.random().toString(36).slice(2);
 }
 
+// Add item
 export function addItem(itemName, itemPrice) {
   const newItem = {
+    id: generateId(),
     name: itemName,
     price: itemPrice,
     completed: false,
-    id: generateId(),
+    favorite: false,
   };
+
   items = [...items, newItem];
+  saveToLocalStorage();
   render();
-  setTimeout(() => alert("Item Added Successfully!"), 0);
+  alert("Item Added Successfully!");
 }
 
+// Update item
 export function updateItemName(newName, newPrice) {
-  items = items.map((item) => {
-    if (item.id === editId) {
-      return { ...item, name: newName, price: newPrice };
-    }
-    return item;
-  });
+  items = items.map((item) =>
+    item.id === editId ? { ...item, name: newName, price: newPrice } : item
+  );
+
   editId = null;
+  saveToLocalStorage();
   render();
-  setTimeout(() => alert("Item Updated Successfully!"), 0);
+  alert("Item Updated Successfully!");
 }
 
+// Set edit ID
 export function setEditId(itemId) {
   editId = itemId;
   render();
 }
 
-export function deleteItem(itemId) {
-  items = items.filter((item) => item.id !== itemId);
-  render();
-  setTimeout(() => alert("Item Deleted Successfully!"), 0);
-}
+// Toggle favorite
 export function toggleFavorite(itemId) {
   items = items.map((item) =>
     item.id === itemId ? { ...item, favorite: !item.favorite } : item
   );
+  saveToLocalStorage();
   render();
 }
 
+// Delete item
+export function deleteItem(itemId) {
+  items = items.filter((item) => item.id !== itemId);
+  saveToLocalStorage();
+  render();
+}
+
+// Render app
 function render() {
   const app = document.getElementById("app");
   app.innerHTML = "";
 
   const itemToEdit = items.find((item) => item.id === editId) || null;
+
   const formElement = createForm(editId, itemToEdit);
-  app.appendChild(formElement);
-
   const itemsElement = createItems(items);
-  app.appendChild(itemsElement);
 
-  const input = app.querySelector(".form-input");
-  if (input) input.focus();
+  app.appendChild(formElement);
+  app.appendChild(itemsElement);
 }
 
+// Initial render
 render();
