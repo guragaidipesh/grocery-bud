@@ -6,19 +6,23 @@ export function createSingleItem(item) {
   div.className = "single-item";
 
   div.innerHTML = `
-    <input type="checkbox" ${item.completed ? "checked" : ""} />
+  <input type="checkbox" ${item.completed ? "checked" : ""} />
+  <div class="item-details">
     <p style="text-decoration: ${item.completed ? "line-through" : "none"}">
       ${item.name}
     </p>
-    <button class="btn icon-btn edit-btn" type="button">
-      <i class="fa-regular fa-pen-to-square"></i>
-    </button>
-    <button class="btn icon-btn remove-btn" type="button">
-      <i class="fa-regular fa-trash-can"></i>
-    </button>
-  `;
+    <span class="price" style="font-size: smaller; color: #c59d5f;">
+      NPR. ${item.price}
+    </span>
+  </div>
+  <button class="btn icon-btn edit-btn" type="button">
+    <i class="fa-regular fa-pen-to-square"></i>
+  </button>
+  <button class="btn icon-btn remove-btn" type="button">
+    <i class="fa-regular fa-trash-can"></i>
+  </button>
+`;
 
-  // ✅ Toggle completed
   const checkbox = div.querySelector('input[type="checkbox"]');
   checkbox.addEventListener("change", () => {
     editCompleted(item.id);
