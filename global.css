@@ -23,3 +23,9 @@ body {
   padding: 2rem;
   position: relative;
 }
+button {
+  font-family: inherit;
+}
+.btn {
+  cursor: pointer;
+}

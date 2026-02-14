@@ -16,7 +16,7 @@
   width: 1rem;
   height: 1rem;
 }
-.single-item .btn {
+.single-item .btn.icon-btn {
   cursor: pointer;
   color: #fff;
   background: #06b6d4;
@@ -63,4 +63,34 @@
 
 .single-item .favorite-btn i {
   pointer-events: none; /* ensures clicking triggers button, not the icon */
+}
+@media (max-width: 500px) {
+  .single-item {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "checkbox details favorite"
+      "edit delete .";
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+
+  .single-item input[type="checkbox"] {
+    grid-area: checkbox;
+  }
+
+  .single-item .item-details {
+    grid-area: details;
+  }
+
+  .single-item .favorite-btn {
+    grid-area: favorite;
+  }
+
+  .single-item .edit-btn {
+    grid-area: edit;
+  }
+
+  .single-item .remove-btn {
+    grid-area: delete;
+  }
 }

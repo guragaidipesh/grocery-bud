@@ -9,17 +9,17 @@ export function createForm(editId = null, itemToEdit = null) {
     <div class="form-control" >
       <input 
         type="text"
-        class="form-input"
+     id="item-input"
         placeholder="e.g. eggs"
         value="${itemToEdit ? itemToEdit.name : ""}"
       />
       <input
         type="number"
-        class="form-price"
+        id="item-price"
         placeholder="e.g. 10"
         value="${itemToEdit ? itemToEdit.price : ""}"
       />
-      <button type="submit" class="btn">
+      <button type="submit" id="add-btn" class="btn">
         ${editId ? "Edit Item" : "Add Item"}
       </button>
     </div>
@@ -28,8 +28,8 @@ export function createForm(editId = null, itemToEdit = null) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const input = form.querySelector(".form-input");
-    const priceInput = form.querySelector(".form-price");
+    const input = form.querySelector("#item-input");
+    const priceInput = form.querySelector("#item-price");
     const name = input.value.trim();
     const price = priceInput.value.trim();
 
