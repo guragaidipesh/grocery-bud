@@ -2,11 +2,12 @@ import { addItem, updateItemName } from "./app.js";
 
 export function createForm(editId = null, itemToEdit = null) {
   const form = document.createElement("form");
+  form.className = "add-item";
 
   form.innerHTML = `
     <h2>Grocery Bud</h2>
-    <div class="form-control">
-      <input
+    <div class="form-control" >
+      <input 
         type="text"
         class="form-input"
         placeholder="e.g. eggs"
