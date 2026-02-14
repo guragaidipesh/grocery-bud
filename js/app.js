@@ -29,10 +29,11 @@ function generateId() {
 
 // Add item
 export function addItem(itemName, itemPrice) {
+  const price = parseFloat(itemPrice);
   const newItem = {
     id: generateId(),
     name: itemName,
-    price: itemPrice,
+    price: price,
     completed: false,
     favorite: false,
   };
@@ -45,8 +46,9 @@ export function addItem(itemName, itemPrice) {
 
 // Update item
 export function updateItemName(newName, newPrice) {
+  const price = parseFloat(newPrice);
   items = items.map((item) =>
-    item.id === editId ? { ...item, name: newName, price: newPrice } : item
+    item.id === editId ? { ...item, name: newName, price: price } : item
   );
 
   editId = null;

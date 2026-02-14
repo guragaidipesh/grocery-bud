@@ -43,7 +43,6 @@ export function createSingleItem(item) {
   const favoriteBtn = div.querySelector(".favorite-btn");
   favoriteBtn.addEventListener("click", () => {
     toggleFavorite(item.id);
-    alert(`${item.name} marked as favorite!`);
   });
 
   return div;
