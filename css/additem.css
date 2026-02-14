@@ -1,22 +1,62 @@
 .add-item {
+  width: 100%;
+}
+
+.add-item h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-size: 2rem;
+}
+
+.add-item .input-group {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 4rem;
-  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  margin-bottom: 2rem;
 }
 
 .add-item input[type="text"],
 .add-item input[type="number"] {
-  padding: 0.75rem 2rem;
-  font-size: 1.5rem;
-  border: 1.5px solid #848181;
-
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #848181;
   border-radius: 5px;
   outline: none;
-  width: 220px;
-  transition: all 0.3s ease;
+
+  min-width: 0;
+
+  box-sizing: border-box;
+}
+
+.add-item input[type="number"] {
+  flex: 0.5;
+  max-width: 100px;
+}
+
+.add-item button#add-btn {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  white-space: nowrap;
+
+  box-sizing: border-box;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: normal;
+}
+
+.add-item button#add-btn:hover {
+  background-color: #45a049;
 }
 
 .add-item input:focus {
@@ -24,32 +64,31 @@
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
-.add-item button#add-btn {
-  padding: 0.75rem 2rem;
-  font-size: 1.5rem;
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
+.add-item input::placeholder {
+  color: #999;
+  font-size: 0.9rem;
 }
 
-.add-item button#add-btn:hover {
-  background-color: #45a049;
-}
-
-@media (max-width: 500px) {
-  .add-item {
-    flex-direction: column;
+@media (max-width: 600px) {
+  .add-item .input-group {
+    flex-wrap: wrap;
+    gap: 0.75rem;
   }
 
   .add-item input[type="text"],
-  .add-item input[type="number"] {
-    width: 100%;
+  .add-item input[type="number"],
+  .add-item button#add-btn {
+    flex: 1fr auto auto;
+
+    height: 10px;
   }
 
-  .add-item button#add-btn {
-    width: 100%;
+  .add-item input[type="number"] {
+    max-width: 100%;
+  }
+
+  .add-item h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
   }
 }
